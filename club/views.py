@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.contrib import messages
-from .models import Topic, Comment
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+from .models import Topic, Comment, Vote
 from .forms import CommentForm
 
 
@@ -22,6 +24,12 @@ def topic_detail(request, slug):
     topic = get_object_or_404(queryset, slug=slug)
     comments = topic.comments.all().order_by("created_on")
     comment_count = topic.comments.count()
+    upvotes = topic.votes.filter(vote_type=1).count()
+    downvotes = topic.votes.filter(vote_type=-1).count()
+    user_vote = None
+
+    if request.user.is_authenticated:
+        user_vote = topic.votes.filter(user=request.user).first()
 
     if request.method == "POST":
         comment_form = CommentForm(data=request.POST)
@@ -42,5 +50,32 @@ def topic_detail(request, slug):
             "comments": comments,
             "comment_count": comment_count,
             "comment_form": comment_form,
+            "upvotes": upvotes,
+            "downvotes": downvotes,
+            "user_vote": user_vote,
         },
     )
+
+
+def topic_vote(request, slug, vote_type):
+    """
+    Handles upvoting and downvoting a topic.
+    """
+    topic = get_object_or_404(Topic, slug=slug, status=1)
+
+    if request.user.is_authenticated:
+        existing_vote = topic.votes.filter(user=request.user).first()
+
+        if existing_vote:
+            if existing_vote.vote_type == vote_type:
+                existing_vote.delete()
+                messages.add_message(request, messages.SUCCESS, 'Vote removed!')
+            else:
+                existing_vote.vote_type = vote_type
+                existing_vote.save()
+                messages.add_message(request, messages.SUCCESS, 'Vote updated!')
+        else:
+            Vote.objects.create(topic=topic, user=request.user, vote_type=vote_type)
+            messages.add_message(request, messages.SUCCESS, 'Vote recorded!')
+
+    return HttpResponseRedirect(reverse('topic_detail', args=[slug]))
