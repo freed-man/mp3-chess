@@ -26,6 +26,19 @@
         <p>No comments yet.</p>
         {% endfor %}
     </div>
+    <div class="col-md-4">
+        {% if user.is_authenticated %}
+        <h3>Leave a comment:</h3>
+        <p>Posting as: {{ user.username }}</p>
+        <form method="post">
+            {{ comment_form }}
+            {% csrf_token %}
+            <button type="submit" class="btn btn-dark mt-2">Submit</button>
+        </form>
+        {% else %}
+        <p>Log in to leave a comment.</p>
+        {% endif %}
+    </div>
 </div>
 
 {% endblock content %}
