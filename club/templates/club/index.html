@@ -10,7 +10,7 @@
     <div class="col-md-4 mb-4">
         <div class="card">
             <div class="card-body">
-                <h2 class="card-title">{{ topic.title }}</h2>
+                <h2 class="card-title"><a href="{% url 'topic_detail' topic.slug %}">{{ topic.title }}</a></h2>
                 <p class="card-text">{{ topic.excerpt }}</p>
                 <p class="text-muted">{{ topic.created_on }}</p>
             </div>

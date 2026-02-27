@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <h1>{{ topic.title }}</h1>
+        <p class="text-muted">Posted by {{ topic.user }} | {{ topic.created_on }}</p>
+        <article>
+            {{ topic.content | safe }}
+        </article>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-8">
+        <h3><i class="far fa-comments"></i> {{ comment_count }} Comments</h3>
+        <hr>
+        {% for comment in comments %}
+        <div class="mb-3">
+            <p><strong>{{ comment.user }}</strong> <span class="text-muted">{{ comment.created_on }}</span></p>
+            <p>{{ comment.body | linebreaks }}</p>
+        </div>
+        {% empty %}
+        <p>No comments yet.</p>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}
