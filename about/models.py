@@ -1,6 +1,7 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
 
+
 class About(models.Model):
     """
     Stores a single about page entry for the chess club.

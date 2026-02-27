@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chess Club</title>
+</head>
+<body>
+    <h1>Welcome to the Chess Club</h1>
+    {% for topic in object_list %}
+        <h2>{{ topic.title }}</h2>
+        <p>{{ topic.excerpt }}</p>
+    {% empty %}
+        <p>No topics yet.</p>
+    {% endfor %}
+</body>
+</html>
