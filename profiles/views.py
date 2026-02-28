@@ -3,7 +3,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Profile, Game
-from .forms import ProfileForm
+from .forms import ProfileForm, GameForm
+
 
 def profile_view(request, username):
     """
@@ -27,8 +28,6 @@ def profile_view(request, username):
             "losses": losses,
         },
     )
-
-from .forms import ProfileForm
 
 
 @login_required
@@ -58,5 +57,36 @@ def profile_edit(request, username):
         {
             "profile_form": profile_form,
             "profile": profile,
+        },
+    )
+
+
+@login_required
+def log_game(request, username):
+    """
+    Allows a user to log a chess game.
+    """
+    user = get_object_or_404(User, username=username)
+
+    if request.user != user:
+        messages.add_message(request, messages.ERROR, 'You can only log games on your own profile!')
+        return redirect('profile', username=username)
+
+    if request.method == "POST":
+        game_form = GameForm(data=request.POST)
+        if game_form.is_valid():
+            game = game_form.save(commit=False)
+            game.user = request.user
+            game.save()
+            messages.add_message(request, messages.SUCCESS, 'Game logged!')
+            return redirect('profile', username=username)
+    else:
+        game_form = GameForm()
+
+    return render(
+        request,
+        "profiles/log_game.html",
+        {
+            "game_form": game_form,
         },
     )
