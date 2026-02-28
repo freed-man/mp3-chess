@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="row mt-4">
+    <div class="col-md-4 text-center">
+        {% if "placeholder" in profile.profile_photo.url %}
+        <img src="{% static 'images/default.jpg' %}" class="img-fluid rounded-circle" alt="default profile photo" style="width: 200px; height: 200px;">
+        {% else %}
+        <img src="{{ profile.profile_photo.url }}" class="img-fluid rounded-circle" alt="{{ profile.user.username }}" style="width: 200px; height: 200px;">
+        {% endif %}
+    </div>
+    <div class="col-md-8">
+        <h1>{{ profile.user.username }}</h1>
+        <p><strong>Skill Level:</strong> {{ profile.skill_level|default:"Not set" }}</p>
+        <p><strong>Bio:</strong> {{ profile.bio|default:"No bio yet." }}</p>
+        {% if profile.date_of_birth %}
+        <p><strong>Date of Birth:</strong> {{ profile.date_of_birth }}</p>
+        {% endif %}
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <h3>Game Stats</h3>
+        <p><strong>Wins:</strong> {{ wins }} | <strong>Draws:</strong> {{ draws }} | <strong>Losses:</strong> {{ losses }}</p>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <h3>Game History</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Opponent</th>
+                    <th>Date</th>
+                    <th>Result</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for game in games %}
+                <tr>
+                    <td>{{ game.opponent_name }}</td>
+                    <td>{{ game.date_played }}</td>
+                    <td>{{ game.result }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3">No games logged yet.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock content %}
