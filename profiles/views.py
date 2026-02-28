@@ -90,3 +90,50 @@ def log_game(request, username):
             "game_form": game_form,
         },
     )
+
+
+@login_required
+def game_edit(request, username, game_id):
+    """
+    Allows a user to edit their own game record.
+    """
+    user = get_object_or_404(User, username=username)
+    game = get_object_or_404(Game, pk=game_id)
+
+    if request.user != user or game.user != request.user:
+        messages.add_message(request, messages.ERROR, 'You can only edit your own games!')
+        return redirect('profile', username=username)
+
+    if request.method == "POST":
+        game_form = GameForm(data=request.POST, instance=game)
+        if game_form.is_valid():
+            game_form.save()
+            messages.add_message(request, messages.SUCCESS, 'Game updated!')
+            return redirect('profile', username=username)
+    else:
+        game_form = GameForm(instance=game)
+
+    return render(
+        request,
+        "profiles/game_edit.html",
+        {
+            "game_form": game_form,
+        },
+    )
+
+
+@login_required
+def game_delete(request, username, game_id):
+    """
+    Allows a user to delete their own game record.
+    """
+    user = get_object_or_404(User, username=username)
+    game = get_object_or_404(Game, pk=game_id)
+
+    if request.user != user or game.user != request.user:
+        messages.add_message(request, messages.ERROR, 'You can only delete your own games!')
+    else:
+        game.delete()
+        messages.add_message(request, messages.SUCCESS, 'Game deleted!')
+
+    return redirect('profile', username=username)
