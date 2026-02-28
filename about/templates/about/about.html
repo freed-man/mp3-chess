@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="row mt-4">
+    {% if about %}
+    <div class="col-md-4 text-center">
+        {% if "placeholder" in about.club_image.url %}
+        <img src="{% static 'images/default.jpg' %}" class="img-fluid" alt="chess club">
+        {% else %}
+        <img src="{{ about.club_image.url }}" class="img-fluid" alt="{{ about.title }}">
+        {% endif %}
+    </div>
+    <div class="col-md-8">
+        <h1>{{ about.title }}</h1>
+        {{ about.content | safe }}
+        {% if about.location %}
+        <p><strong>Location:</strong> {{ about.location }}</p>
+        {% endif %}
+        {% if about.contact_email %}
+        <p><strong>Contact:</strong> {{ about.contact_email }}</p>
+        {% endif %}
+        <p class="text-muted"><em>Last updated: {{ about.updated_on }}</em></p>
+    </div>
+    {% else %}
+    <div class="col-md-12">
+        <h1>About</h1>
+        <p>Coming soon.</p>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock content %}
