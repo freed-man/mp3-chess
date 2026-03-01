@@ -15,3 +15,25 @@ class About(models.Model):
 
     def __str__(self):
         return self.title
+
+
+CATEGORY_CHOICES = (
+    ("Question", "Question"),
+    ("Comment", "Comment"),
+    ("Request", "Request"),
+    ("Technical Issue", "Technical Issue"),
+)
+
+
+class ContactRequest(models.Model):
+    """
+    Stores a single contact request from a site visitor.
+    """
+    name = models.CharField(max_length=200)
+    email = models.EmailField()
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
+    message = models.TextField()
+    read = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.category} from {self.name}"
