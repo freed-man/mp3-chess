@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="row mt-4">
+    <div class="col-md-8 offset-md-2">
+        <h1>Search Results</h1>
+        {% if query %}
+        <p>Results for: <strong>{{ query }}</strong></p>
+        {% for topic in results %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h2><a href="{% url 'topic_detail' topic.slug %}">{{ topic.title }}</a></h2>
+                <p>{{ topic.excerpt }}</p>
+                <p class="text-muted">{{ topic.created_on }}</p>
+            </div>
+        </div>
+        {% empty %}
+        <p>No topics found.</p>
+        {% endfor %}
+        {% else %}
+        <p>Please enter a search term.</p>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock content %}

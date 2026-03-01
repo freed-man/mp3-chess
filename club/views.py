@@ -3,6 +3,7 @@ from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.db import models
 from .models import Topic, Comment, Vote
 from .forms import CommentForm
 
@@ -14,6 +15,72 @@ class TopicList(generic.ListView):
     queryset = Topic.objects.filter(status=1)
     template_name = "club/index.html"
     paginate_by = 6
+
+
+def topic_search(request):
+    """
+    Searches topics by title or content.
+    """
+    query = request.GET.get('q', '')
+    results = []
+
+    if query:
+        results = Topic.objects.filter(status=1).filter(
+            models.Q(title__icontains=query) | models.Q(content__icontains=query)
+        )
+
+    return render(
+        request,
+        "club/search_results.html",
+        {
+            "query": query,
+            "results": results,
+        },
+    )
+
+
+def topic_search(request):
+    """
+    Searches topics by title or content.
+    """
+    query = request.GET.get('q', '')
+    results = []
+
+    if query:
+        results = Topic.objects.filter(status=1).filter(
+            models.Q(title__icontains=query) | models.Q(content__icontains=query)
+        )
+
+    return render(
+        request,
+        "club/search_results.html",
+        {
+            "query": query,
+            "results": results,
+        },
+    )
+
+
+def topic_search(request):
+    """
+    Searches topics by title or content.
+    """
+    query = request.GET.get('q', '')
+    results = []
+
+    if query:
+        results = Topic.objects.filter(status=1).filter(
+            models.Q(title__icontains=query) | models.Q(content__icontains=query)
+        )
+
+    return render(
+        request,
+        "club/search_results.html",
+        {
+            "query": query,
+            "results": results,
+        },
+    )
 
 
 def topic_detail(request, slug):
