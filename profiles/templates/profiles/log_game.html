@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 
@@ -7,7 +8,7 @@
     <div class="col-md-8 offset-md-2">
         <h1>Log a Game</h1>
         <form method="post">
-            {{ game_form }}
+            {{ game_form | crispy }}
             {% csrf_token %}
             <button type="submit" class="btn btn-dark mt-2">Save</button>
             <a href="{% url 'profile' request.user.username %}" class="btn btn-secondary mt-2">Cancel</a>
