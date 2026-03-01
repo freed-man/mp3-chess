@@ -115,7 +115,7 @@ def game_edit(request, username, game_id):
 
     return render(
         request,
-        "profiles/game_edit.html",
+        "profiles/edit_game.html",
         {
             "game_form": game_form,
         },

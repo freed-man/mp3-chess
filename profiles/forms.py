@@ -8,10 +8,7 @@ class ProfileForm(forms.ModelForm):
     """
     class Meta:
         model = Profile
-        fields = ('profile_photo', 'date_of_birth', 'gender', 'skill_level', 'bio')
-        widgets = {
-            'date_of_birth': forms.DateInput(attrs={'type': 'date'}),
-        }
+        fields = ('profile_photo', 'skill_level', 'bio')
 
 
 class GameForm(forms.ModelForm):
@@ -21,3 +18,6 @@ class GameForm(forms.ModelForm):
     class Meta:
         model = Game
         fields = ('opponent_name', 'date_played', 'result')
+        widgets = {
+            'date_played': forms.DateInput(attrs={'type': 'date'}),
+        }

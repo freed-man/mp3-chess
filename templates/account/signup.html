@@ -5,8 +5,8 @@
 
 <div class="row mt-4">
     <div class="col-md-6 offset-md-3">
-        <h1>Sign Up</h1>
-        <p>Welcome to Chess Club! Already have an account? <a href="{% url 'account_login' %}">Sign in here.</a></p>
+        <h3>Welcome to Chess Club!</h3>
+        <p> Already have an account? <a href="{% url 'account_login' %}">Sign in here</a></p>
         <form method="post" action="{% url 'account_signup' %}">
             {{ form | crispy }}
             {% csrf_token %}

@@ -1,0 +1,120 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.card {
+    border: 1px solid #dee2e6;
+    background-color: #fff;
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-title a {
+    text-decoration: none;
+    color: #212529;
+}
+
+.card-title a:hover {
+    color: #495057;
+}
+
+footer {
+    margin-top: auto;
+}
+
+.btn-dark {
+    border-radius: 4px;
+}
+
+.table th {
+    background-color: #343a40;
+    color: #fff;
+}
+
+.img-fluid.rounded-circle {
+    border: 3px solid #343a40;
+    object-fit: cover;
+}
+
+.alert {
+    margin-top: 15px;
+}
+
+.pagination .page-link {
+    color: #343a40;
+}
+
+.pagination .page-link:hover {
+    background-color: #343a40;
+    color: #fff;
+}
+
+.contact-form textarea {
+    height: 120px;
+}
+
+.profile-section {
+    text-align: center;
+}
+
+.stat-wins {
+    color: #28a745;
+    font-weight: 700;
+}
+
+.stat-draws {
+    color: #007bff;
+    font-weight: 700;
+}
+
+.stat-losses {
+    color: #dc3545;
+    font-weight: 700;
+}
+
+.profile-row {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.game-stats {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-stats h3 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.game-stats p {
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .game-stats {
+        padding-top: 2rem;
+    }
+    .profile-row {
+        flex-direction: column;
+    }
+}
+
+.game-table td, .game-table th {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+}

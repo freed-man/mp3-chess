@@ -3,16 +3,14 @@
 
 {% block content %}
 
-<div class="row mt-4">
-    <div class="col-md-4 text-center">
+<div class="row mt-4 text-center profile-row">
+    <div class="col-md-4 offset-md-1">
         {% if "placeholder" in profile.profile_photo.url %}
         <img src="{% static 'images/default.jpg' %}" class="img-fluid rounded-circle" alt="default profile photo" style="width: 200px; height: 200px;">
         {% else %}
         <img src="{{ profile.profile_photo.url }}" class="img-fluid rounded-circle" alt="{{ profile.user.username }}" style="width: 200px; height: 200px;">
         {% endif %}
-    </div>
-    <div class="col-md-8">
-        <h1>{{ profile.user.username }}</h1>
+        <h1 class="mt-3">{{ profile.user.username }}</h1>
         <p><strong>Skill Level:</strong> {{ profile.skill_level|default:"Not set" }}</p>
         <p><strong>Bio:</strong> {{ profile.bio|default:"No bio yet." }}</p>
         {% if profile.date_of_birth %}
@@ -23,12 +21,11 @@
         <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">Delete Account</button>
         {% endif %}
     </div>
-</div>
-
-<div class="row mt-4">
-    <div class="col-md-12">
-        <h3>Game Stats</h3>
-        <p><strong>Wins:</strong> {{ wins }} | <strong>Draws:</strong> {{ draws }} | <strong>Losses:</strong> {{ losses }}</p>
+    <div class="col-md-3 offset-md-1 game-stats">
+        <h3>Game Stats:</h3>
+        <p><strong>Wins:</strong> <span class="stat-wins">{{ wins }}</span></p>
+        <p><strong>Draws:</strong> <span class="stat-draws">{{ draws }}</span></p>
+        <p><strong>Losses:</strong> <span class="stat-losses">{{ losses }}</span></p>
     </div>
 </div>
 
@@ -38,7 +35,7 @@
         {% if user.is_authenticated and user == profile.user %}
         <a href="{% url 'log_game' profile.user.username %}" class="btn btn-dark mb-3">Log a Game</a>
         {% endif %}
-        <table class="table">
+        <table class="table game-table">
             <thead>
                 <tr>
                     <th>Opponent</th>
@@ -54,7 +51,15 @@
                 <tr>
                     <td>{{ game.opponent_name }}</td>
                     <td>{{ game.date_played }}</td>
-                    <td>{{ game.result }}</td>
+                    <td>
+                        {% if game.result == "Win" %}
+                        <span class="stat-wins">{{ game.result }}</span>
+                        {% elif game.result == "Draw" %}
+                        <span class="stat-draws">{{ game.result }}</span>
+                        {% elif game.result == "Loss" %}
+                        <span class="stat-losses">{{ game.result }}</span>
+                        {% endif %}
+                    </td>
                     {% if user.is_authenticated and user == profile.user %}
                     <td>
                         <a href="{% url 'game_edit' profile.user.username game.id %}" class="btn btn-sm btn-outline-dark">Edit</a>
