@@ -39,50 +39,6 @@ def topic_search(request):
     )
 
 
-def topic_search(request):
-    """
-    Searches topics by title or content.
-    """
-    query = request.GET.get('q', '')
-    results = []
-
-    if query:
-        results = Topic.objects.filter(status=1).filter(
-            models.Q(title__icontains=query) | models.Q(content__icontains=query)
-        )
-
-    return render(
-        request,
-        "club/search_results.html",
-        {
-            "query": query,
-            "results": results,
-        },
-    )
-
-
-def topic_search(request):
-    """
-    Searches topics by title or content.
-    """
-    query = request.GET.get('q', '')
-    results = []
-
-    if query:
-        results = Topic.objects.filter(status=1).filter(
-            models.Q(title__icontains=query) | models.Q(content__icontains=query)
-        )
-
-    return render(
-        request,
-        "club/search_results.html",
-        {
-            "query": query,
-            "results": results,
-        },
-    )
-
-
 def topic_detail(request, slug):
     """
     Displays a single topic with its comments and comment form.
