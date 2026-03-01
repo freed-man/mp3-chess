@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row mt-4">
+    <div class="col-md-6 offset-md-3">
+        <h1>Sign Out</h1>
+        <p>Are you sure you want to sign out?</p>
+        <form method="post" action="{% url 'account_logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-dark mt-2">Sign Out</button>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
