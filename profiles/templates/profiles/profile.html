@@ -18,6 +18,10 @@
         {% if profile.date_of_birth %}
         <p><strong>Date of Birth:</strong> {{ profile.date_of_birth }}</p>
         {% endif %}
+        {% if user.is_authenticated and user == profile.user %}
+        <a href="{% url 'profile_edit' profile.user.username %}" class="btn btn-dark">Edit Profile</a>
+        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">Delete Account</button>
+        {% endif %}
     </div>
 </div>
 
@@ -65,6 +69,27 @@
                 {% endfor %}
             </tbody>
         </table>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteAccountModalLabel">Delete Account?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete your account? This will permanently remove your profile, games, comments, and votes. This action cannot be undone.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <form method="post" action="{% url 'delete_account' profile.user.username %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Delete Account</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 

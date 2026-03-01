@@ -137,3 +137,22 @@ def game_delete(request, username, game_id):
         messages.add_message(request, messages.SUCCESS, 'Game deleted!')
 
     return redirect('profile', username=username)
+
+
+@login_required
+def delete_account(request, username):
+    """
+    Allows a user to delete their own account and all related data.
+    """
+    user = get_object_or_404(User, username=username)
+
+    if request.user != user:
+        messages.add_message(request, messages.ERROR, 'You can only delete your own account!')
+        return redirect('home')
+
+    if request.method == "POST":
+        user.delete()
+        messages.add_message(request, messages.SUCCESS, 'Account deleted.')
+        return redirect('home')
+
+    return redirect('profile', username=username)
