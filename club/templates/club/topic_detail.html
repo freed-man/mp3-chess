@@ -4,10 +4,10 @@
 
 {% block content %}
 
-<div class="row mt-3">
+<div class="row mt-3 align-items-center">
     <div class="col-md-8">
         <h1>{{ topic.title }}</h1>
-        <p class="text-muted">Posted by {{ topic.user }} | {{ topic.created_on }}</p>
+        <p class="text-muted">Posted by <a href="{% url 'profile' topic.user.username %}">{{ topic.user }}</a> | {{ topic.created_on }}</p>
         <article>
             {{ topic.content | safe }}
         </article>
@@ -27,6 +27,11 @@
         </div>
         {% endif %}
     </div>
+    {% if topic.featured_image and "placeholder" not in topic.featured_image.url %}
+    <div class="col-md-4 text-center">
+        <img src="{{ topic.featured_image.url }}" class="img-fluid rounded" alt="{{ topic.title }}" style="max-width: 80%;">
+    </div>
+    {% endif %}
 </div>
 
 <div class="row mt-4">
@@ -35,7 +40,7 @@
         <hr>
         {% for comment in comments %}
         <div class="mb-3">
-            <p><strong>{{ comment.user }}</strong> <span class="text-muted">{{ comment.created_on }}</span></p>
+            <p><strong><a href="{% url 'profile' comment.user.username %}">{{ comment.user }}</a></strong> <span class="text-muted">{{ comment.created_on }}</span></p>
             <div id="comment{{ comment.id }}">
                 {{ comment.body | linebreaks }}
             </div>

@@ -6,14 +6,14 @@
 
 <div class="row mt-4">
     {% if about %}
-    <div class="col-md-4 text-center">
+    <div class="col-md-8 offset-md-2 text-center">
         {% if "placeholder" in about.club_image.url %}
-        <img src="{% static 'images/default.jpg' %}" class="img-fluid" alt="chess club">
+        <img src="{% static 'images/default.jpg' %}" class="img-fluid" alt="chess club" style="max-width: 50%;">
         {% else %}
-        <img src="{{ about.club_image.url }}" class="img-fluid" alt="{{ about.title }}">
+        <img src="{{ about.club_image.url }}" class="img-fluid" alt="{{ about.title }}" style="max-width: 80%;">
         {% endif %}
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8 offset-md-2 mt-4">
         <h1>{{ about.title }}</h1>
         {{ about.content | safe }}
         {% if about.location %}
@@ -33,14 +33,18 @@
 </div>
 
 <div class="row mt-5">
-    <div class="col-md-6 offset-md-3 contact-form">
-        <h2>Get in Touch</h2>
-        <p>Have a question, comment, or need help? Fill out the form below and we'll get back to you.</p>
-        <form method="post">
-            {{ contact_form | crispy }}
-            {% csrf_token %}
-            <button type="submit" class="btn btn-dark mt-2">Send</button>
-        </form>
+    <div class="col-md-6 offset-md-3 contact-form text-center">
+        <button class="btn btn-dark mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#contactForm">
+            Get in Touch
+        </button>
+        <div class="collapse" id="contactForm">
+            <p>Have a question, comment, or need help? Fill out the form below and we'll get back to you.</p>
+            <form method="post">
+                {{ contact_form | crispy }}
+                {% csrf_token %}
+                <button type="submit" class="btn btn-dark mt-2">Send</button>
+            </form>
+        </div>
     </div>
 </div>
 
