@@ -13,6 +13,10 @@ def profile_view(request, username):
     user = get_object_or_404(User, username=username)
     profile = get_object_or_404(Profile, user=user)
     games = Game.objects.filter(user=user).order_by('-date_played')
+    for game in games:
+        game.opponent_user = User.objects.filter(
+            username=game.opponent_name
+        ).exists()
     wins = games.filter(result='Win').count()
     draws = games.filter(result='Draw').count()
     losses = games.filter(result='Loss').count()
