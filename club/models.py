@@ -11,7 +11,8 @@ class Topic(models.Model):
     """
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="topics")
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="topics")
     content = models.TextField()
     featured_image = CloudinaryField('image', default='placeholder')
     created_on = models.DateTimeField(auto_now_add=True)
@@ -28,10 +29,13 @@ class Topic(models.Model):
 
 class Comment(models.Model):
     """
-    Stores a single comment related to :model:`club.Topic` and :model:`auth.User`.
+    Stores a single comment related to
+    :model:`club.Topic` and :model:`auth.User`.
     """
-    topic = models.ForeignKey(Topic, on_delete=models.CASCADE, related_name="comments")
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comments")
+    topic = models.ForeignKey(
+        Topic, on_delete=models.CASCADE, related_name="comments")
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="comments")
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
 
@@ -46,8 +50,10 @@ class Vote(models.Model):
     """
     Stores a single vote related to :model:`club.Topic` and :model:`auth.User`.
     """
-    topic = models.ForeignKey(Topic, on_delete=models.CASCADE, related_name="votes")
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="votes")
+    topic = models.ForeignKey(
+        Topic, on_delete=models.CASCADE, related_name="votes")
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="votes")
     vote_type = models.IntegerField(choices=((1, "Upvote"), (-1, "Downvote")))
 
     class Meta:

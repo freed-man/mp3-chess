@@ -26,7 +26,8 @@ def topic_search(request):
 
     if query:
         results = Topic.objects.filter(status=1).filter(
-            models.Q(title__icontains=query) | models.Q(content__icontains=query)
+            models.Q(title__icontains=query) |
+            models.Q(content__icontains=query)
         )
 
     return render(
@@ -92,13 +93,16 @@ def topic_vote(request, slug, vote_type):
         if existing_vote:
             if existing_vote.vote_type == vote_type:
                 existing_vote.delete()
-                messages.add_message(request, messages.SUCCESS, 'Vote removed!')
+                messages.add_message(
+                    request, messages.SUCCESS, 'Vote removed!')
             else:
                 existing_vote.vote_type = vote_type
                 existing_vote.save()
-                messages.add_message(request, messages.SUCCESS, 'Vote updated!')
+                messages.add_message(
+                    request, messages.SUCCESS, 'Vote updated!')
         else:
-            Vote.objects.create(topic=topic, user=request.user, vote_type=vote_type)
+            Vote.objects.create(
+                topic=topic, user=request.user, vote_type=vote_type)
             messages.add_message(request, messages.SUCCESS, 'Vote recorded!')
 
     return HttpResponseRedirect(reverse('topic_detail', args=[slug]))
@@ -120,7 +124,8 @@ def comment_edit(request, slug, comment_id):
             comment.save()
             messages.add_message(request, messages.SUCCESS, 'Comment updated!')
         else:
-            messages.add_message(request, messages.ERROR, 'Error updating comment!')
+            messages.add_message(
+                request, messages.ERROR, 'Error updating comment!')
 
     return HttpResponseRedirect(reverse('topic_detail', args=[slug]))
 
@@ -130,13 +135,14 @@ def comment_delete(request, slug, comment_id):
     Allows a user to delete their own comment.
     """
     queryset = Topic.objects.filter(status=1)
-    topic = get_object_or_404(queryset, slug=slug)
+    topic = get_object_or_404(queryset, slug=slug)  # noqa
     comment = get_object_or_404(Comment, pk=comment_id)
 
     if comment.user == request.user:
         comment.delete()
         messages.add_message(request, messages.SUCCESS, 'Comment deleted!')
     else:
-        messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
+        messages.add_message(
+            request, messages.ERROR, 'You can only delete your own comments!')
 
     return HttpResponseRedirect(reverse('topic_detail', args=[slug]))

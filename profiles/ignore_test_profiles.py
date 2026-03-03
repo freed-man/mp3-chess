@@ -5,7 +5,7 @@ Covers: Models, Views, Forms, URLs, Signals.
 from django.test import TestCase, Client
 from django.urls import reverse, resolve
 from django.contrib.auth.models import User
-from profiles.models import (
+from profiles.models import (   # noqa
     Profile, Game, GENDER_CHOICES, SKILL_CHOICES, RESULT_CHOICES,
 )
 from profiles.forms import ProfileForm, GameForm
@@ -30,7 +30,9 @@ class ProfileModelTest(TestCase):
         self.profile = Profile.objects.get(user=self.user)
 
     def test_profile_created_on_user_creation(self):
-        """Test that a Profile is auto-created via signal when a User is created."""
+        """
+        Test that a Profile is auto-created via signal when a User is created.
+        """
         self.assertIsNotNone(self.profile)
         self.assertEqual(self.profile.user, self.user)
 
@@ -125,7 +127,9 @@ class ProfileSignalTest(TestCase):
         self.assertTrue(Profile.objects.filter(user=user).exists())
 
     def test_no_duplicate_profile_on_save(self):
-        """Test that saving an existing user doesn't create a second profile."""
+        """
+        Test that saving an existing user doesn't create a second profile.
+        """
         user = User.objects.create_user(
             username="signaltest2", password="testpass123"
         )
@@ -468,7 +472,7 @@ class DeleteAccountViewTest(TestCase):
     def test_cannot_delete_other_users_account(self):
         """Test that a user cannot delete someone else's account."""
         self.client.login(username="attacker", password="testpass123")
-        response = self.client.post(
+        response = self.client.post(    # noqa
             reverse("delete_account", args=["deleteme"])
         )
         self.assertTrue(User.objects.filter(username="deleteme").exists())

@@ -12,7 +12,10 @@ def about_page(request):
         contact_form = ContactForm(data=request.POST)
         if contact_form.is_valid():
             contact_form.save()
-            messages.add_message(request, messages.SUCCESS, 'Message sent! We will get back to you soon.')
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Message sent! We will get back to you soon.'
+            )
 
     about = About.objects.all().order_by('-updated_on').first()
     contact_form = ContactForm()

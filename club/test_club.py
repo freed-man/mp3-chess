@@ -5,7 +5,7 @@ Covers: Models, Views, Forms, URLs.
 from django.test import TestCase, Client
 from django.urls import reverse, resolve
 from django.contrib.auth.models import User
-from club.models import Topic, Comment, Vote, STATUS
+from club.models import Topic, Comment, Vote, STATUS    # noqa
 from club.forms import CommentForm, VoteForm
 from club.views import (
     TopicList, topic_detail, topic_search,

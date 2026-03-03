@@ -43,11 +43,13 @@ def profile_edit(request, username):
     profile = get_object_or_404(Profile, user=user)
 
     if request.user != user:
-        messages.add_message(request, messages.ERROR, 'You can only edit your own profile!')
+        messages.add_message(
+            request, messages.ERROR, 'You can only edit your own profile!')
         return redirect('profile', username=username)
 
     if request.method == "POST":
-        profile_form = ProfileForm(data=request.POST, files=request.FILES, instance=profile)
+        profile_form = ProfileForm(
+            data=request.POST, files=request.FILES, instance=profile)
         if profile_form.is_valid():
             profile_form.save()
             messages.add_message(request, messages.SUCCESS, 'Profile updated!')
@@ -73,7 +75,9 @@ def log_game(request, username):
     user = get_object_or_404(User, username=username)
 
     if request.user != user:
-        messages.add_message(request, messages.ERROR, 'You can only log games on your own profile!')
+        messages.add_message(
+            request, messages.ERROR,
+            'You can only log games on your own profile!')
         return redirect('profile', username=username)
 
     if request.method == "POST":
@@ -105,7 +109,8 @@ def game_edit(request, username, game_id):
     game = get_object_or_404(Game, pk=game_id)
 
     if request.user != user or game.user != request.user:
-        messages.add_message(request, messages.ERROR, 'You can only edit your own games!')
+        messages.add_message(
+            request, messages.ERROR, 'You can only edit your own games!')
         return redirect('profile', username=username)
 
     if request.method == "POST":
@@ -135,7 +140,8 @@ def game_delete(request, username, game_id):
     game = get_object_or_404(Game, pk=game_id)
 
     if request.user != user or game.user != request.user:
-        messages.add_message(request, messages.ERROR, 'You can only delete your own games!')
+        messages.add_message(
+            request, messages.ERROR, 'You can only delete your own games!')
     else:
         game.delete()
         messages.add_message(request, messages.SUCCESS, 'Game deleted!')
@@ -151,7 +157,8 @@ def delete_account(request, username):
     user = get_object_or_404(User, username=username)
 
     if request.user != user:
-        messages.add_message(request, messages.ERROR, 'You can only delete your own account!')
+        messages.add_message(
+            request, messages.ERROR, 'You can only delete your own account!')
         return redirect('home')
 
     if request.method == "POST":
