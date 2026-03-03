@@ -4,7 +4,6 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.db import models
-from requests import request
 from .models import Topic, Comment, Vote
 from .forms import CommentForm
 
