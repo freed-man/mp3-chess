@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import About
 from .forms import ContactForm
@@ -16,6 +16,7 @@ def about_page(request):
                 request, messages.SUCCESS,
                 'Message sent! We will get back to you soon.'
             )
+            return redirect('about')
 
     about = About.objects.all().order_by('-updated_on').first()
     contact_form = ContactForm()
