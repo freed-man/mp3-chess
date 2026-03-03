@@ -7,6 +7,11 @@
     {% for topic in object_list %}
     <div class="col-md-4 mb-4">
         <div class="card">
+            {% if topic.featured_image and "placeholder" not in topic.featured_image.url %}
+            <img src="{{ topic.featured_image.url }}" class="card-img-top" alt="{{ topic.title }}">
+            {% else %}
+            <img src="{% static 'images/default.jpg' %}" class="card-img-top" alt="default image">
+            {% endif %}
             <div class="card-body">
                 <h2 class="card-title"><a href="{% url 'topic_detail' topic.slug %}">{{ topic.title }}</a></h2>
                 <p class="card-text">{{ topic.excerpt }}</p>
