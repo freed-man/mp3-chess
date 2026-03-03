@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.db import models
+from requests import request
 from .models import Topic, Comment, Vote
 from .forms import CommentForm
 
@@ -63,6 +64,9 @@ def topic_detail(request, slug):
             comment.topic = topic
             comment.save()
             messages.add_message(request, messages.SUCCESS, 'Comment posted!')
+            return HttpResponseRedirect(
+                reverse('topic_detail', args=[slug])
+            )
 
     comment_form = CommentForm()
 

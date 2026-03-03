@@ -16,3 +16,22 @@
 </div>
 
 {% endblock content %}
+
+{% block extras %}
+<script>
+    const passwordFields = document.querySelectorAll('input[type="password"]');
+    const toggleBtn = document.createElement('button');
+    toggleBtn.type = 'button';
+    toggleBtn.className = 'btn btn-outline-secondary btn-sm mt-1';
+    toggleBtn.textContent = 'Show Passwords';
+    passwordFields[passwordFields.length - 1].parentNode.appendChild(toggleBtn);
+
+    toggleBtn.addEventListener('click', function () {
+        const isHidden = passwordFields[0].type === 'password';
+        passwordFields.forEach(function (field) {
+            field.type = isHidden ? 'text' : 'password';
+        });
+        toggleBtn.textContent = isHidden ? 'Hide Passwords' : 'Show Passwords';
+    });
+</script>
+{% endblock %}

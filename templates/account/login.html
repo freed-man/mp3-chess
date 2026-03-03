@@ -10,9 +10,33 @@
         <form method="post" action="{% url 'account_login' %}">
             {{ form | crispy }}
             {% csrf_token %}
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
             <button type="submit" class="btn btn-dark mt-2">Sign In</button>
         </form>
     </div>
 </div>
 
 {% endblock content %}
+
+{% block extras %}
+<script>
+    const passwordField = document.getElementById('id_password');
+    const toggleBtn = document.createElement('button');
+    toggleBtn.type = 'button';
+    toggleBtn.className = 'btn btn-outline-secondary btn-sm mt-1';
+    toggleBtn.textContent = 'Show Password';
+    passwordField.parentNode.appendChild(toggleBtn);
+
+    toggleBtn.addEventListener('click', function () {
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            toggleBtn.textContent = 'Hide Password';
+        } else {
+            passwordField.type = 'password';
+            toggleBtn.textContent = 'Show Password';
+        }
+    });
+</script>
+{% endblock %}
