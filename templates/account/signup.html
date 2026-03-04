@@ -10,6 +10,9 @@
         <form method="post" action="{% url 'account_signup' %}">
             {{ form | crispy }}
             {% csrf_token %}
+            <div id="id_password1_helptext" class="form-text text-muted visually-hidden">
+                Your password must contain at least 8 characters.
+            </div>
             <button type="submit" class="btn btn-dark mt-2">Sign Up</button>
         </form>
     </div>
