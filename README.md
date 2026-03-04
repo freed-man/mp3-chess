@@ -76,7 +76,7 @@ User stories were created and managed using GitHub Issues, tracked via a GitHub 
 | 16 | As a site admin, I can create, edit, and publish articles so that I can manage club content | Must Have | Admin panel with rich text editor, draft/published status, featured images |
 | 17 | As a site admin, I can view and manage contact requests so that I can respond to members | Should Have | Contact requests listed in admin panel with read/unread filtering |
 
-The full project board can be viewed here: [GitHub Projects Board](https://github.com/your-username/your-repo/projects/1)
+The full project board can be viewed here: [GitHub Projects Board](https://github.com/users/freed-man/projects/2)
 
 ### Agile Methodology
 
