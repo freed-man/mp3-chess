@@ -22,7 +22,7 @@
         {% endif %}
     </div>
     <div class="col-md-3 offset-md-1 game-stats">
-        <h3>Game Stats:</h3>
+        <h2>Game Stats:</h2>
         <p><strong>Wins:</strong> <span class="stat-wins">{{ wins }}</span></p>
         <p><strong>Draws:</strong> <span class="stat-draws">{{ draws }}</span></p>
         <p><strong>Losses:</strong> <span class="stat-losses">{{ losses }}</span></p>
@@ -31,7 +31,7 @@
 
 <div class="row mt-4">
     <div class="col-md-12">
-        <h3>Game History</h3>
+        <h2>Game History</h2>
         {% if user.is_authenticated and user == profile.user %}
         <a href="{% url 'log_game' profile.user.username %}" class="btn btn-dark mb-3">Log a Game</a>
         {% endif %}
@@ -83,11 +83,11 @@
     </div>
 </div>
 
-<div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteAccountModal" tabindex="-1" role="dialog" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="deleteAccountModalLabel">Delete Account?</h5>
+                <h2 class="modal-title" id="deleteAccountModalLabel">Delete Account?</h2>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
