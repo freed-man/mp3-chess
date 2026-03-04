@@ -202,7 +202,9 @@ The project uses a PostgreSQL relational database with 8 custom models plus Djan
 
 <details>
   <summary>View ERD</summary>
-  <p>Add ERD image here</p>
+
+  ![Entity Relationship Diagram](docs/chess_club_erd.png)
+
 </details>
 
 **Models Overview:**
