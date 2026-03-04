@@ -147,22 +147,51 @@ Wireframes were created during the planning phase to outline the layout and stru
 
 <details>
   <summary>Homepage</summary>
-  <p>Add wireframe image here</p>
+
+  ![Homepage Wireframe](docs/wireframe_homepage.png)
+
 </details>
 
 <details>
   <summary>Topic Detail</summary>
-  <p>Add wireframe image here</p>
+
+  ![Topic Detail Wireframe](docs/wireframe_topic_detail.png)
+
 </details>
 
 <details>
   <summary>Profile Page</summary>
-  <p>Add wireframe image here</p>
+
+  ![Profile Page Wireframe](docs/wireframe_profile.png)
+
 </details>
 
 <details>
   <summary>About Page</summary>
-  <p>Add wireframe image here</p>
+
+  ![About Page Wireframe](docs/wireframe_about.png)
+
+</details>
+
+<details>
+  <summary>Login</summary>
+
+  ![Login Wireframe](docs/wireframe_login.png)
+
+</details>
+
+<details>
+  <summary>Sign Up</summary>
+
+  ![Sign Up Wireframe](docs/wireframe_signup.png)
+
+</details>
+
+<details>
+  <summary>Logout</summary>
+
+  ![Logout Wireframe](docs/wireframe_logout.png)
+
 </details>
 
 ### Database Schema
