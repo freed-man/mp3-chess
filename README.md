@@ -34,7 +34,7 @@ Link to the live site: [Chess Club](https://chess-club-c940b2bc0cf9.herokuapp.co
 
 ### Project Purpose
 
-Chess Club was built to provide a welcoming online space for chess players of all levels. The site allows a club admin to publish chess-related articles and tutorials, while registered members can engage through comments, vote on content, log their game history, and maintain personal profiles with statistics. The project was developed as part of the Code Institute Backend Development course (Portfolio Project 4).
+Chess Club was built to provide a welcoming online space for chess players of all levels. The site allows a club admin to publish chess-related articles and tutorials, while registered members can engage through comments, vote on content, log their game history, and maintain personal profiles with statistics.
 
 The site owner (admin) benefits by managing the club content, communicating with members via the contact system, and growing an engaged chess community. Members benefit by tracking their progress, connecting with other players, and accessing chess articles and tips.
 
@@ -92,7 +92,9 @@ All 17 user stories were completed and moved to the Done column.
 
 <details>
   <summary>View Kanban board screenshot</summary>
-  <p>Add screenshot of GitHub Projects board here</p>
+
+  ![GitHub Projects Kanban Board](docs/kanban_board.png)
+
 </details>
 
 ### Design
@@ -108,7 +110,9 @@ All 17 user stories were completed and moved to the Done column.
 
 <details>
   <summary>View colour palette</summary>
-  <p>Add colour palette image here (you can create one at coolors.co)</p>
+
+  ![Colour Palette](docs/colour_palette.png)
+
 </details>
 
 **Typography**
