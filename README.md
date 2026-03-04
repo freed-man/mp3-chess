@@ -248,87 +248,132 @@ The project uses a PostgreSQL relational database with 8 custom models plus Djan
 
 <details>
   <summary>Homepage with Topic Cards — browse published articles with featured images, titles, excerpts, and pagination (6 per page)</summary>
-  <p>Add screenshot here</p>
+
+  ![Homepage](docs/feature_home_page.png)
+
 </details>
 
 <details>
   <summary>Topic Detail Page — read full articles with featured images positioned to the right on desktop and top on mobile, voting buttons with live counts, and comments section</summary>
-  <p>Add screenshot here</p>
+
+  ![Topic Detail](docs/feature_topic.png)
+
 </details>
 
 <details>
   <summary>User Registration — sign up with username, email, and password with show/hide password toggle</summary>
-  <p>Add screenshot here</p>
+
+  ![Sign Up](docs/feature_signup.png)
+
 </details>
 
 <details>
   <summary>Login/Logout — secure authentication with redirect back to previous page after login via hidden "next" field</summary>
-  <p>Add screenshot here</p>
+
+  ![Login](docs/feature_login.png)
+  ![Logout](docs/feature_logout.png)
+
 </details>
 
 <details>
   <summary>Comments (Full CRUD) — create, edit, and delete own comments with confirmation modals and edit button that populates the form</summary>
-  <p>Add screenshot here</p>
+
+  ![Comment](docs/feature_comment.png)
+  ![Edit Comment](docs/feature_edit_comment.png)
+  ![Delete Comment](docs/feature_delete_comment.png)
+
 </details>
 
 <details>
   <summary>Voting System — upvote and downvote topics, toggle votes on/off, switch between up and down, disabled buttons for logged-out users</summary>
-  <p>Add screenshot here</p>
+
+  ![Voting](docs/feature_voting.png)
+
 </details>
 
 <details>
   <summary>User Profiles — view profile photo, bio, skill level, date of birth, and game stats (colour-coded wins/draws/losses) with game history table</summary>
-  <p>Add screenshot here</p>
+
+  ![Profile](docs/feature_profile.png)
+
 </details>
 
 <details>
   <summary>Edit Profile — update photo (via Cloudinary), bio, skill level, date of birth, and gender with pre-filled form</summary>
-  <p>Add screenshot here</p>
+
+  ![Edit Profile](docs/feature_edit_profile_1.png)
+  ![Edit Profile Updated](docs/feature_edit_profile_2.png)
+
 </details>
 
 <details>
   <summary>Game Logging (Full CRUD) — log games with opponent name, date picker, and result. Edit and delete own game records</summary>
-  <p>Add screenshot here</p>
+
+  ![Log Game](docs/feature_log_game_1.png)
+  ![Log Game Result](docs/feature_log_game_2.png)
+  ![Edit Game](docs/feature_edit_game_1.png)
+  ![Edit Game Result](docs/feature_edit_game_2.png)
+  ![Delete Game](docs/feature_delete_game.png)
+
 </details>
 
 <details>
   <summary>Clickable Opponents — opponent names in game history link to their profiles if they are registered users, plain text otherwise</summary>
-  <p>Add screenshot here</p>
+
+  ![Clickable Opponents](docs/feature_clickable_opponents.png)
+
 </details>
 
 <details>
   <summary>Search — find articles by keyword in title or content, with results page and message if no results found</summary>
-  <p>Add screenshot here</p>
+
+  ![Search](docs/feature_search.png)
+
 </details>
 
 <details>
   <summary>About Page — club information with image, location, contact email, and collapsible contact form</summary>
-  <p>Add screenshot here</p>
+
+  ![About Page](docs/feature_about.png)
+
 </details>
 
 <details>
   <summary>Contact Form — submit messages with name, email, category dropdown (Question/Comment/Request/Technical Issue), and message body</summary>
-  <p>Add screenshot here</p>
+
+  ![Contact Form](docs/feature_contact_form_1.png)
+  ![Contact Form Filled](docs/feature_contact_form_2.png)
+  ![Contact Form Category](docs/feature_contact_form_3.png)
+  ![Contact Form Success](docs/feature_contact_form_4.png)
+
 </details>
 
 <details>
   <summary>Account Deletion — delete account with confirmation modal, cascade removes all related data (profile, games, comments, votes)</summary>
-  <p>Add screenshot here</p>
+
+  ![Delete Account](docs/feature_delete_account.png)
+
 </details>
 
 <details>
   <summary>Auto-Dismissing Alerts — success and error messages fade out after 3 seconds using JavaScript setTimeout</summary>
-  <p>Add screenshot here</p>
+
+  ![Auto-Dismissing Alerts](docs/feature_auto_dismissing_alerts.png)
+
 </details>
 
 <details>
   <summary>Admin Panel — rich text editor (Summernote) for articles, manage topics with draft/published status, manage users, comments, votes, games, and contact requests with read/unread filtering</summary>
-  <p>Add screenshot here</p>
+
+  ![Admin Panel](docs/feature_admin_panel.png)
+
 </details>
 
 <details>
   <summary>Responsive Design — fully responsive on mobile, tablet, and desktop with proper column stacking and image reordering</summary>
-  <p>Add screenshot here</p>
+
+  ![Responsive Design](docs/feature_responsive_design.png)
+
 </details>
 
 ### Potential Features
