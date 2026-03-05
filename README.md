@@ -271,6 +271,7 @@ The project uses a PostgreSQL relational database with 8 custom models plus Djan
   <summary>Login/Logout — secure authentication with redirect back to previous page after login via hidden "next" field</summary>
 
   ![Login](docs/feature_login.png)
+
   ![Logout](docs/feature_logout.png)
 
 </details>
@@ -279,7 +280,9 @@ The project uses a PostgreSQL relational database with 8 custom models plus Djan
   <summary>Comments (Full CRUD) — create, edit, and delete own comments with confirmation modals and edit button that populates the form</summary>
 
   ![Comment](docs/feature_comment.png)
+
   ![Edit Comment](docs/feature_edit_comment.png)
+
   ![Delete Comment](docs/feature_delete_comment.png)
 
 </details>
@@ -302,6 +305,7 @@ The project uses a PostgreSQL relational database with 8 custom models plus Djan
   <summary>Edit Profile — update photo (via Cloudinary), bio, skill level, date of birth, and gender with pre-filled form</summary>
 
   ![Edit Profile](docs/feature_edit_profile_1.png)
+
   ![Edit Profile Updated](docs/feature_edit_profile_2.png)
 
 </details>
@@ -310,9 +314,13 @@ The project uses a PostgreSQL relational database with 8 custom models plus Djan
   <summary>Game Logging (Full CRUD) — log games with opponent name, date picker, and result. Edit and delete own game records</summary>
 
   ![Log Game](docs/feature_log_game_1.png)
+
   ![Log Game Result](docs/feature_log_game_2.png)
+
   ![Edit Game](docs/feature_edit_game_1.png)
+
   ![Edit Game Result](docs/feature_edit_game_2.png)
+
   ![Delete Game](docs/feature_delete_game.png)
 
 </details>
@@ -342,8 +350,11 @@ The project uses a PostgreSQL relational database with 8 custom models plus Djan
   <summary>Contact Form — submit messages with name, email, category dropdown (Question/Comment/Request/Technical Issue), and message body</summary>
 
   ![Contact Form](docs/feature_contact_form_1.png)
+
   ![Contact Form Filled](docs/feature_contact_form_2.png)
+
   ![Contact Form Category](docs/feature_contact_form_3.png)
+  
   ![Contact Form Success](docs/feature_contact_form_4.png)
 
 </details>
@@ -609,4 +620,3 @@ To run this project locally:
 ### Acknowledgements
 
 - Code Institute for the curriculum, walkthrough projects, assessment criteria, and the Django Cheat Sheet
-- The Code Institute Slack community for general support and guidance
